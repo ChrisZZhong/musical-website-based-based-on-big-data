@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.MusicMapper">
+	<update id="updateMusic">
+		update musics set name=#{m.name},
+		picture=#{m.picture} ,words=#{m.words}, time={m.time},
+		singers=#{m.singers}, sale=#{m.sale}, daysOnChart=#{m.daysOnChart}
+		where id=#{m.id}
+	</update>
+	<insert id="insertMusic" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into
+		musics(name,picture,words,time,singers,sale,daysOnChart)
+		values(#{m.name},#{m.picture},#{m.words},#{m.time},#{m.singers},#{m.sale},#{m.daysOnChart});
+	</insert>
+	<resultMap type="Music" id="getMusic">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="picture" column="picture" />
+		<result property="words" column="words" />
+		<result property="time" column="time" />
+		<result property="singers" column="singers" />
+	</resultMap>
+	<select id="getMusicById" resultMap="getMusic"
+		parameterType="Integer">
+		select * from musics where
+		id = #{id}
+	</select>
+	<select id="searchMusicByName" resultMap="getMusic">
+		select * from musics
+		where name like '%${name}%'
+	</select>
+	<select id="getMusicsTop100" resultMap="getMusic">
+		select * from musics
+		limit #{pspc},#{ps}
+	</select>
+</mapper>

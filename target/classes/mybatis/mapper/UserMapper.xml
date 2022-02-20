@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.UserMapper">
+	<insert id="register" parameterType="user"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		users(username,password,gender,phonenumber,intro,level)
+		values(#{user.username},#{user.password},#{user.gender},#{user.phonenumber},#{user.intro},1)
+	</insert>
+	<delete id="deleteById" parameterType="int">
+		delete from Users
+		where
+		id=#{id}
+	</delete>
+	<update id="updateUser">
+		update Users
+		set
+		username=#{user.username},password=#{user.password},gender=#{user.gender},phonenumber=#{user.phonenumber},intro=#{user.intro}
+		where id=#{user.id}
+	</update>
+	<select id="getUserByName" resultMap="getUser">
+		select * from users where
+		username = #{name}
+	</select>
+	<select id="getUserById" resultMap="getUser">
+		select * from users where
+		id=#{id}
+	</select>
+	<resultMap id="getUser" type="User">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="gender" column="gender" />
+		<result property="phonenumber" column="phonenumber" />
+		<result property="intro" column="intro" />
+		<result property="level" column="level" />
+	</resultMap>
+	<!-- 以下为收藏功能 -->
+	<insert id="addcollect">
+		insert into userandmusic(id,userid,musicid)
+		values(null,#{userid},#{musicid})
+	</insert>
+	<delete id="uncollect">
+		delete from userandmusic where
+		userid=#{userid} and
+		musicid=#{musicid}
+	</delete>
+	<select id="iscollect" resultType="Integer">
+		select count(*) from
+		userandmusic where
+		userid=#{userid} and musicid=#{musicid}
+	</select>
+	<select id="getcollectbyuserid" resultType="Integer">
+		select musicid from
+		userandmusic where userid =#{userid}
+	</select>
+</mapper>

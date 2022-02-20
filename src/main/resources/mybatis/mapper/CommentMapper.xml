@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.CommentMapper">
+	<select id="getMusicComments" resultMap="getComment">
+		select * from comments where music_id=#{id};
+	</select>
+	<resultMap id="getComment" type="Comment">
+		<id property="id" column="id"/>
+		<result property="user_id" column="user_id"/>
+		<result property="music_id" column="music_id"/>
+		<result property="date" column="date"/>
+		<result property="context" column="context"/>
+		<result property="username" column="username"/>
+	</resultMap>
+	<insert id="addComment" useGeneratedKeys="true" keyProperty="id">
+		insert into comments(user_id,music_id,date,context,username) values(#{c.user_id},#{c.music_id},now(),#{c.context},#{c.username})
+	</insert>
+	<delete id="deleteComment">
+		delete from comments where id=#{id}
+	</delete>
+</mapper>

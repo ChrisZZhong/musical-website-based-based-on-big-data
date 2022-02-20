@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.SingerMapper">
+	<!-- addSinger -->
+	<insert id="addSinger" parameterType="singer"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		Singers(id,name,picture,intro,sells)
+		values
+		(null,#{name},#{picture},#{intro},#{sale})
+	</insert>
+
+	<!-- updateSinger -->
+	<update id="updateSinger" parameterType="singer">
+		update Singers
+		set
+		name=#{name},picture=#{picture},picture=#{picture},intro=#{intro},sale=#{sale}
+		where id=#{id}
+	</update>
+	<!-- 准确搜索 -->
+	<select id="findSinger" parameterType="java.lang.Integer"
+		resultMap="getSinger">
+		select * from Singers
+		where id =#{id}
+	</select>
+	<!-- searchSinger模糊搜索 -->
+	<select id="searchSingerByName" parameterType="java.lang.String"
+		resultMap="getSinger">
+		select * from Singers where name like '%${name}%'
+	</select>
+	<resultMap type="Singer" id="getSinger">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="picture" column="picture" />
+		<result property="intro" column="intro" />
+		<result property="sale" column="sales" />
+	</resultMap>
+	<!-- getAllSingers -->
+	<select id="getAllSingers" resultMap="getSinger">
+		select * from Singers limit
+		#{pspc},#{ps}
+	</select>
+	<!-- getMusicsBySingerName -->
+	<select id="getMusicsBySingerName" resultType="String"
+		parameterType="java.lang.String">
+		select musicname from musicandsinger where singername =
+		#{name}
+	</select>
+
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.SongListMapeer">
+	<insert id="addSongList" parameterType="songList">
+		insert into
+		Lists(id,name,intro,username,date,type)
+		values
+		(null,#{name},#{intro},#{username},#{date},#{type})
+	</insert>
+	<!-- 准确搜索 -->
+	<select id="findSongList" parameterType="java.lang.String">
+		select * from Lists
+		where name = #{name}
+	</select>
+	<!-- 模糊搜索 -->
+	<select id="searchSongList" parameterType="java.lang.String"
+		resultMap="getList">
+		select * from Lists where name like '%#{name}%'
+	</select><!-- 此处没歌曲 -->
+	<resultMap type="songList" id="getList">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="intro" column="intro" />
+		<result property="username" column="username" />
+		<result property="date" column="date" />
+		<result property="type" column="type" />
+	</resultMap>
+
+	<!-- 搜索songsoflist -->
+	<select id="findList_musics_Byid"
+		parameterType="java.lang.Integer" resultMap="getSongs">
+		select * from ListAndMusic
+		where list_music_id = #{id}
+	</select>
+	<resultMap type="List_musics" id="getSongs">
+		<result property="id" column="id" />
+		<result property="list_id" column="list_music_id" />
+		<result property="musicname" column="musicname" />
+		<result property="time" column="time" />
+		<result property="singer" column="singer" />
+		<result property="album" column="album" />
+	</resultMap>
+	<!-- 增添List的歌曲 -->
+	<insert id="addSongsOfList" parameterType="List_musics">
+		insert into
+		ListAndMusic(id,list_music_id,musicname,time,singer,album)
+		values
+		(null,#{list_id},#{musicname},#{time},#{singer},#{album})
+	</insert>
+	<delete id="deleteSongsOfList" parameterType="List_musics">
+		delete from
+		ListAndMusic where id= #{id}
+	</delete>
+</mapper>

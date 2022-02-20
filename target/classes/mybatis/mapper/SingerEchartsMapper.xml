@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.music.dao.SingerEchartsMapper">
+<select id="findsingerdata" parameterType="java.lang.String" resultMap="singerdata">
+select * from singermonthsale
+where name=#{singername}
+</select>
+<resultMap type="SingerEcharts" id="singerdata">
+<result property="id" column="id"/>
+<result property="name" column="name"/>
+<result property="date" column="date"/>
+<result property="sale" column="sale"/>
+</resultMap>
+</mapper>
