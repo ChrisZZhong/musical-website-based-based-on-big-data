@@ -3,12 +3,7 @@
 This is an musical website based on big data built by spring-mvc.
 
 #Demo
-[link]()
-<object data="./presentaion.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="./presentaion.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="./presentaion.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+<center><embed src="./presentation.pdf" width="850" height="600"></center>
 
 Software Project Practice in China Soft International(ICS&S) July.2019 - Sep.2019
 1. Built a music website based on big data by using JAVA in Spring MVC framework.
