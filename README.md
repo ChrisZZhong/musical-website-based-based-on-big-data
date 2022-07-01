@@ -41,7 +41,7 @@ A musical website based on big data.
 
 ## Sales
 
-<img src="./demo/Sales.png" width="900">
+<img src="./demo/sales.png" width="900">
 
 # Features:<a id="Features"></a>
 Front-end: Html/CSS/JS
