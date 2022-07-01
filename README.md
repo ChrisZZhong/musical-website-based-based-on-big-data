@@ -10,8 +10,6 @@ A musical website based on big data.
 
 • Visualized Apache ECharts of sales data over time using the Hadoop distributed system.
 
-<img src="./demo/login.png" width="900">
-
 # quick link 
 
 [#Demo](#Demo)
