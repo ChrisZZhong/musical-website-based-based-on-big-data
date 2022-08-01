@@ -46,7 +46,7 @@ A musical website based on big data.
 # Features:<a id="Features"></a>
 Front-end: Html/CSS/JS
 
-Back-end: Java Spring MVC - Hibernate
+Back-end: Java Spring MVC - Mybatis
 
 Database: MySQL, JDBC
 
