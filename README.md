@@ -4,7 +4,7 @@ A musical website based on big data.
 
 • Built a music website using Hibernate and Spring MVC framework in Java.
 
-• Used Spider to collect sales data of the top 100 singers and stored data in MySQL.
+• Used NetEase Cloud Music API to collect sales data of the top 100 singers and stored data in MySQL.
 
 • Implemented login/logout/sign in, music playing, music lyrics, ranking functions.
 
