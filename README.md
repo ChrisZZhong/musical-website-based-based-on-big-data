@@ -4,7 +4,7 @@ A musical website based on big data.
 
 • Built a music website using Mybatis and Spring MVC framework in Java.
 
-• Used NetEase Cloud Music API to collect sales data of the top singers and stored data in MySQL.
+• Used NetEase Cloud Music API to collect data of the top singers and stored data in MySQL.
 
 • Implemented session based authentication and music playing, music searching, ranking functions with Ajax.
 
