@@ -48,7 +48,7 @@ Front-end: Html/CSS/JS
 
 Back-end: Java Spring MVC - Mybatis
 
-Database: MySQL, JDBC
+Database: MySQL
 
 Sales trend: Hadoop, Apache ECharts
 
